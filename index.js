@@ -19,13 +19,13 @@ mongoose.connect(
     "mongodb+srv://thenagarajanv:Nagarajan24@cluster0.ngfrvsi.mongodb.net/IncenseSticks?retryWrites=true&w=majority"
 ).then(console.log("connected db"));
 
-app.get("/", (req, res) => {
+app.get("https://trailbackend.onrender.com/", (req, res) => {
   Incense.find({})
     .then((x) => res.json(x))
     .catch((err) => res.json(err));
 });
 
-app.get("/Winter", (req, res) => {
+app.get("https://trailbackend.onrender.com/Winter", (req, res) => {
   Winter.find({})
     .then((x) => res.json(x))
     .catch((err) => res.json(err));
@@ -38,20 +38,20 @@ app.get("/Winter", (req, res) => {
 //       .catch((err) => res.json(err));
 //   });
 
- app.get("/Incense", (req, res) => {
+ app.get("https://trailbackend.onrender.com/Incense", (req, res) => {
     Incense.find({})
       .then((x) => res.json(x))
       .catch((err) => res.json(err));
   });
 
 
-  app.get("/Oil", (req, res) => {
+  app.get("https://trailbackend.onrender.com/Oil", (req, res) => {
     Oil.find({})
       .then((x) => res.json(x))
       .catch((err) => res.json(err));
   });
 
-  app.get("/Decor", (req, res) => {
+  app.get("https://trailbackend.onrender.com/Decor", (req, res) => {
     Decor.find({})
       .then((x) => res.json(x))
       .catch((err) => res.json(err));
@@ -66,7 +66,7 @@ app.get("/Winter", (req, res) => {
   //   await db.Cart.remove({});
   // });
   
-  app.post("/Cart/AddToCart", async (req, res) => {
+  app.post("https://trailbackend.onrender.com/Cart/AddToCart", async (req, res) => {
     const { id } = req.body;
     const { name } = req.body;
     const { salesprice } = req.body;
@@ -106,7 +106,7 @@ app.get("/Winter", (req, res) => {
       }
   });
 
-  app.post("/User/UpdatePriceQuantity", async (req, res) => {
+  app.post("https://trailbackend.onrender.com/User/UpdatePriceQuantity", async (req, res) => {
     const {userID}=req.body;
     const {id} = req.body;
     const {amount} = req.body;
@@ -129,7 +129,7 @@ app.get("/Winter", (req, res) => {
     // console.log(user);
   });
 
-  app.get("/User/Get", async (req, res) => {
+  app.get("https://trailbackend.onrender.com/User/Get", async (req, res) => {
     const {userID} = req.body;
     await User.find({id:userID})
     .then((x) => res.json(x))
@@ -140,7 +140,7 @@ app.listen(3001, () => {
   console.log("server is running");
 });
 
-app.post("/Incense", async (req, res) => {
+app.post("https://trailbackend.onrender.com/Incense", async (req, res) => {
   const { id } = req.body;
   const { name } = req.body;
   const { regularprice } = req.body;
