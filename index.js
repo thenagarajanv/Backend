@@ -1,4 +1,3 @@
-
 const Incense = require("./Models/Incense");
 const Winter = require("./Models/Winter");
 const User = require("./Models/User");
@@ -90,7 +89,7 @@ app.get("/Winter", (req, res) => {
     if((await User.find({id:userID})).length== 0){
       await User.create({id:userID, email: userEmail, name:userName });
       // await User.create({"id" : id, "name" : name, "salesprice" : salesprice, "stocks" : stocks, "mainImage" : mainImage, "amount" : amount, "count" : count});
-      await User.create(req.body);
+      // await User.create(req.body);
     }
       if(User.findById(userID)){
         // const user = await User.find({id:userID});
@@ -113,7 +112,7 @@ app.get("/Winter", (req, res) => {
     const {stocks} = req.body;
     const {salesprice} = req.body;
     const {count} = req.body;
-    const user = await User.find({id:userID});
+    // const user = await User.find({id:userID});
     
     await User.updateOne(
       {id: userID, "cart.id":id},
@@ -130,10 +129,12 @@ app.get("/Winter", (req, res) => {
   });
 
   app.get("/User/Get", async (req, res) => {
-    const {userID} = req.body;
-    await User.find({id:userID})
-    .then((x) => res.json(x))
+    const {userId}=req.query;
+    
+    await User.find({id:userId})
+    .then((x) => res.json(x[0].cart))
     .catch((err) => res.json(err));
+    
   });
 
 app.listen(3001, () => {
